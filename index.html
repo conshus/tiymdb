@@ -11,20 +11,44 @@
 <body>
   <h1>The Iron Yard Movie DataBase</h1>
   <div class="tiymdb-nowplaying"></div>
+  <div class="tiymdb-actors"></div>
   <div id="credits">This product uses the TMDb API but is not endorsed or certified by TMDb.</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
   <script id="tiymdb-nowplaying-template" type="text/x-handlebars-template">
     <div class="movie">
       <section class="movieListing flex">
         <div class="posterImage">
-          <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" class="posterImage">
+          <img src="{{posterPic}}" class="posterImage">
         </div>
         <div class="movieInfo">
           <h1>{{title}}</h1>
-          {{overview}}
-          <br />Average Rating: {{vote_average}}
+          {{overview}} Runtime: {{runtime}}mins
+          <br /><br />Starring:<br />
+          {{#cast.cast}}
+            <button class="actorButton" data-actorId="{{id}}">{{name}}</button>&nbsp;
+          {{/cast.cast}}
+          <br /><br />Director:<br />
+          {{cast.crew.[0].name}}
+          <br /><br />Release Date: {{releaseDate}}
+          <br /><br />Average Rating: {{rating}}
+          <br /><br />Genre:
+          {{#genre}}
+            √{{name}}&nbsp;
+          {{/genre}}
         </div>
       </section>
+    </div>
+  </script>
+  <script id="tiymdb-actors-template" type="text/x-handlebars-template">
+    <div class="actor">
+      <section class="actorListing flex">
+        <div class="posterImage">
+          <img src="{{picture}}" class="posterImage">
+        </div>
+        <div class="actorInfo">
+          <h1>{{name}}</h1>
+          Birthday: {{birthday}} BirthPlace: {{birthplace}}
+          <br />{{bio}}
     </div>
   </script>
   <script type="text/javascript" src="api_key.js" charset="utf-8"></script>
