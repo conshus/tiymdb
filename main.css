@@ -1,0 +1,33 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5vw;
+}
+.flex {
+  display: flex;
+}
+.flexcolumn{
+  flex-direction: column;
+}
+.vcenter {
+  align-items: center;
+}
+.hcenter {
+ justify-content: center;
+}
+.space_between{
+ justify-content: space-between;
+ width:100%
+}
+.space_around{
+ justify-content: space-around;
+ flex-wrap: wrap;
+}
+.posterImage{
+  width: 20vw;
+  padding: 2vw;
+}
+.movieInfo{
+  padding: 2vw;
+}

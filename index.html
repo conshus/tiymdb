@@ -9,7 +9,24 @@
   <title>The Iron Yard Movie DataBase</title>
 </head>
 <body>
-
+  <h1>The Iron Yard Movie DataBase</h1>
+  <div class="tiymdb-nowplaying"></div>
+  <div id="credits">This product uses the TMDb API but is not endorsed or certified by TMDb.</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  <script id="tiymdb-nowplaying-template" type="text/x-handlebars-template">
+    <div class="movie">
+      <section class="movieListing flex">
+        <div class="posterImage">
+          <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" class="posterImage">
+        </div>
+        <div class="movieInfo">
+          <h1>{{title}}</h1>
+          {{overview}}
+          <br />Average Rating: {{vote_average}}
+        </div>
+      </section>
+    </div>
+  </script>
   <script type="text/javascript" src="api_key.js" charset="utf-8"></script>
   <script type="text/javascript" src="index.js" charset="utf-8"></script>
 </body>
