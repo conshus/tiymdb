@@ -9,9 +9,11 @@
   <title>The Iron Yard Movie DataBase</title>
 </head>
 <body>
-  <h1>The Iron Yard Movie DataBase</h1>
+  <h1>The Iron Yard Movie DataBase Now Playing</h1>
   <div class="tiymdb-nowplaying"></div>
-  <div class="tiymdb-actors"></div>
+  <div id="slider">
+    <div class="tiymdb-actors"></div>
+  </div>
   <div id="credits">This product uses the TMDb API but is not endorsed or certified by TMDb.</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
   <script id="tiymdb-nowplaying-template" type="text/x-handlebars-template">
@@ -33,22 +35,41 @@
           <br /><br />Average Rating: {{rating}}
           <br /><br />Genre:
           {{#genre}}
-            √{{name}}&nbsp;
+            -{{name}}&nbsp;
           {{/genre}}
         </div>
       </section>
     </div>
   </script>
   <script id="tiymdb-actors-template" type="text/x-handlebars-template">
+    <div id="close">X close</div>
     <div class="actor">
       <section class="actorListing flex">
-        <div class="posterImage">
-          <img src="{{picture}}" class="posterImage">
+        <div>
+          <img src="{{picture}}" class="actorImage">
         </div>
         <div class="actorInfo">
           <h1>{{name}}</h1>
           Birthday: {{birthday}} BirthPlace: {{birthplace}}
-          <br />{{bio}}
+          <br /><br />{{bio}}
+        </div>
+      </section>
+      <section>
+        <h1 class="">Filmography</h1>
+        <div class="filmography flex wrap hcenter">
+          {{#movies.cast}}
+          <div class="flex flexcolumn hcenter">
+            <div class="film">
+              <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" class="filmographyImage">
+            </div>
+            <div class="filmographyText flex hcenter vcenter">
+              <br />Played: {{character}}
+              <br />Released: {{release_date}}
+            </div>
+          </div>
+          {{/movies.cast}}
+        </div>
+      </section>
     </div>
   </script>
   <script type="text/javascript" src="api_key.js" charset="utf-8"></script>
